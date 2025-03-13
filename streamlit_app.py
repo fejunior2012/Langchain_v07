@@ -11,7 +11,7 @@ openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 
 def generate_response(input_text):
     model = ChatOpenAI(temperature=0.7, api_key=openai_api_key)
-    st.info(model.invoke(input_text))
+    st.info(model.invoke(input_text).content)
 
 
 with st.form("my_form"):
@@ -24,3 +24,4 @@ with st.form("my_form"):
         st.warning("Please enter your OpenAI API key!", icon="⚠")
     if submitted and openai_api_key.startswith("sk-"):
         generate_response(text)
+        print(text)
